@@ -30,75 +30,33 @@ if(isset($_COOKIE["id"])){
             <input class="form-control mr-sm-2" type="search" placeholder="Search NCS Color" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <form class="form-inline my-lg-0" method="POST">
-        <li class="nav-item dropdown">
-                <select class="form-control" id="exampleFormControlSelect1">
-                <option disabled>NCS</option>
+        <form class="form-inline my-lg-0" method="POST" name="options">
+            <li class="nav-item dropdown">
+                <select class="form-control" name='color'>
+                <option select>NCS</option>
                 <?php include $_SERVER['DOCUMENT_ROOT']."/modules/ncs.php";?>
                 </select>
-        </li>
-        <li class="nav-item dropdown">
-                <select class="form-control" id="exampleFormControlSelect1">
-                <option disabled>Products</option>
+            </li>
+            <li class="nav-item dropdown">
+                <select class="form-control" name='product'>
+                <option select>Products</option>
                 <?php include $_SERVER['DOCUMENT_ROOT']."/modules/products.php";?>
                 </select>
-        </li>
-    </form>
+            </li>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="btnOptions">OK</button>
+        </form>
         </ul>
     </div> 
     <a class="btn btn-outline-success my-2 my-sm-0" href="/modules/exit.php">Exit</a>
     </nav>
+
+    <?php include $_SERVER['DOCUMENT_ROOT']."/parts/recipe.php";?>
+    
 <?php
 }else{
-include $_SERVER['DOCUMENT_ROOT']."/modules/authorization.php";
+include $_SERVER['DOCUMENT_ROOT']."/parts/authorization.php";
 }
 ?>
-<div class="alert alert-primary" role="alert">
-Цвет
-</div>
-<div class="alert alert-primary" role="alert">
-Краска
-</div>
-<div class="alert alert-primary" role="alert">
-База
-</div>
-</div>
-<div class="alert alert-primary" role="alert">
-Рецептура
-<div class="alert alert-secondary" role="alert">
-  
-</div>
-<div class="alert alert-secondary" role="alert">
- 
-</div>
-<div class="alert alert-secondary" role="alert">
-  
-</div>
-<div class="alert alert-secondary" role="alert">
- 
-</div>
-</div>
-<div class="alert alert-primary" role="alert">
-Выбор фасовки
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-    <label class="form-check-label" for="inlineRadio1">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-    <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-    <label class="form-check-label" for="inlineRadio2">10</label>
-    </div>
-    </div>
-    </div>
-    </div>
-<div class="alert alert-primary" role="alert">
-Цвена
-</div>
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 

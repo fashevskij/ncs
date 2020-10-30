@@ -1,6 +1,5 @@
-
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/configs/db.php";
+
 
 $sql = "SELECT * FROM `product` WHERE `id_product` ";
 $result = mysqli_query($connect, $sql); //оправляем запрос
@@ -10,7 +9,6 @@ for ($i=0; $i < $count_products; $i++) {
 
     $products = mysqli_fetch_assoc($result);
 ?>
-     <option class="dropdown-item" ><?php echo $products["product_name"];?></option>
+     <option class="dropdown-item"><?php echo $products["product_name"];?></option>
 <?php
-}    
-
+}   
