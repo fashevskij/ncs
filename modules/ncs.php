@@ -8,7 +8,8 @@ $count_colors = mysqli_num_rows($result);
 for ($i=0; $i < $count_colors; $i++) { 
     $colors = mysqli_fetch_assoc($result);
     ?>
-    <a class="dropdown-item" href="#"><?php echo $colors["color_name"];?></a>
+    <option class="dropdown-item" name="<?php echo $colors["color_html"]?>"
+    style="background:<?php echo $colors["color_html"]?>;" value="<?php echo $colors["color_name"];?>"><?php echo $colors["color_name"];?></option>
     <?php
 }    
 

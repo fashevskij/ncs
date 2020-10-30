@@ -10,7 +10,7 @@ for ($i=0; $i < $count_products; $i++) {
 
     $products = mysqli_fetch_assoc($result);
 ?>
-            <a class="dropdown-item" href="#"><?php echo $products["product_name"];?></a>
+     <option class="dropdown-item" ><?php echo $products["product_name"];?></option>
 <?php
 }    
 
