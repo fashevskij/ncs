@@ -8,7 +8,6 @@ if(isset($_POST['btnOptions'])) {
     if($_POST['color'] != "NCS" && $_POST['product'] != "Products") {
         //определяем фасовку
         $packing = $_POST['packing'];
-
         //делаем запрос к БД на выбор цвета соответствующего из запроса
         $sql = "SELECT * FROM `ncs` WHERE `color_name` ='" . $_POST["color"] . "'";
         //выполняем запрос
@@ -37,7 +36,6 @@ if(isset($_POST['btnOptions'])) {
         //преобразовываем его в массив
         $name_base = mysqli_fetch_assoc($result);
         ?>
-
         <div class="alert alert-primary" > 
             Цвет: <?php echo $color['color_name']; ?>
             <div class="w-25 position-absolute p-3" 

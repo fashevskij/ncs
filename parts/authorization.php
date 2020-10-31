@@ -2,16 +2,16 @@
 include $_SERVER['DOCUMENT_ROOT']."/configs/db.php";
 ?>
 <form method="POST" class="form-inline" id="login-form">
-    <div class="form-group mx-sm-3 mb-2">
+    <div class="form-group mx-sm-3 mb-2" style="margin:10px;">
         <label for="staticEmail2" class="sr-only" >Email</label>
-        <input type="text" class="form-control" id="staticEmail2" placeholder="Email" name="email">
+        <input type="text" class="form-control" id="staticEmail2" placeholder="Эмайл" name="email">
         </div>
-        <div class="form-group mx-sm-3 mb-2">
+        <div class="form-group mx-sm-3 mb-2" style="margin:10px;">
         <label for="inputPassword2" class="sr-only">Password</label>
-        <input type="password" class="form-control" id="inputPassword2" placeholder="Password" name="password">
+        <input type="password" class="form-control" id="inputPassword2" placeholder="Пароль" name="password">
     </div>
-        <button type="submit" class="btn btn-primary mb-2" name="Authorization" id="btn-login">Authorization</button>
-        <button type="submit" class="btn btn-primary mb-2" name="Registration" id="btn-login">Registration</button>
+        <button style="margin:10px;" type="submit" class="btn btn-secondary " name="Authorization" id="btn-login">Войти</button>
+        <button style="margin:10px;" type="submit" class="btn btn-secondary " name="Registration" id="btn-login">Регистрация</button>
 </form>
 
 <?php
