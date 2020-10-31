@@ -55,6 +55,7 @@ if(isset($_COOKIE["id"])){
     <div id="recipe">
         <?php include $_SERVER['DOCUMENT_ROOT']."/parts/recipe.php";?>
     </div>
+    <script src="js/recipe.js"></script>
     <script src="js/search.js"></script>
 <?php
 }else{
@@ -64,8 +65,7 @@ if(isset($_COOKIE["id"])){
     include $_SERVER['DOCUMENT_ROOT']."/parts/authorization.php";
     ?>
     </nav>
-    <?php
-}
+<}
 ?>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
