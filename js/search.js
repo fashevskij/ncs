@@ -1,4 +1,5 @@
 //блок поиска текста без перезагрузки страницы
+
 //получаем  форму поиска
 let search = document.querySelector("#search"),
 	//получаем поле для воода текста
@@ -11,7 +12,7 @@ search.onsubmit = function (event) {
 	//отмена действия по умолчанию
 	event.preventDefault();
 	//текст + поиск
-    let data = "search-color=" + textSearch.value + "&send=1";
+    let data = "search_color=" + textSearch.value + "&send=1";
 	//созадем обьект XMLHttpRequest();
 	let ajax = new XMLHttpRequest();
 	//создаем запрос
