@@ -45,13 +45,17 @@ if(isset($_COOKIE["id"])){
                 <?php include $_SERVER['DOCUMENT_ROOT']."/modules/products.php";?>
                 </select>
             </li>
+            <input type='hidden' value='1' name='packing'>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="btnOptions">OK</button>
         </form>
         </ul>
     </div> 
     <a class="btn btn-outline-success my-2 my-sm-0" href="/modules/exit.php">Exit</a>
     </nav>
-    <?php include $_SERVER['DOCUMENT_ROOT']."/parts/recipe.php";?>
+    <div id="recipe">
+        <?php include $_SERVER['DOCUMENT_ROOT']."/parts/recipe.php";?>
+    </div>
+    <script src="js/recipe.js"></script>
     <script src="js/search.js"></script>
 <?php
 }else{
