@@ -4,6 +4,7 @@ include $_SERVER['DOCUMENT_ROOT']."/configs/db.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@ include $_SERVER['DOCUMENT_ROOT']."/configs/db.php";
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <title>Document</title>
 </head>
+
 <body>
 <?php
 if(isset($_COOKIE["id"])){
@@ -26,13 +28,13 @@ if(isset($_COOKIE["id"])){
         <li class="nav-item active">
             <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
         </li>
-        <form class="form-inline my-lg-0" method="POST">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search NCS Color" aria-label="Search">
+        <form class="form-inline my-lg-0" id="search" method="POST">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search NCS Color" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <form class="form-inline my-lg-0" method="POST" name="options">
             <li class="nav-item dropdown">
-                <select class="form-control" name='color'>
+                <select class="form-control" name='color' id="color">
                 <option select>NCS</option>
                 <?php include $_SERVER['DOCUMENT_ROOT']."/modules/ncs.php";?>
                 </select>
@@ -49,12 +51,11 @@ if(isset($_COOKIE["id"])){
     </div> 
     <a class="btn btn-outline-success my-2 my-sm-0" href="/modules/exit.php">Exit</a>
     </nav>
-
     <?php include $_SERVER['DOCUMENT_ROOT']."/parts/recipe.php";?>
-    
+    <script src="js/search.js"></script>
 <?php
 }else{
-include $_SERVER['DOCUMENT_ROOT']."/parts/authorization.php";
+    include $_SERVER['DOCUMENT_ROOT']."/parts/authorization.php";
 }
 ?>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

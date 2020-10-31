@@ -57,8 +57,8 @@ if(isset($_POST['btnOptions'])) {
     $result = mysqli_query($connect, $sql);
     //определяем количество колорантов
     $count_colorants = mysqli_num_rows($result);
+    $price = 0;
     for ($i=0; $i < $count_colorants; $i++) { 
-        $price = 0;
         //преобразовываем его в массив
         $recipe = mysqli_fetch_assoc($result);
         //делаем запрос к БД на определение названия колоранта соответствующей цвету и продукту с запроса
@@ -68,7 +68,7 @@ if(isset($_POST['btnOptions'])) {
         //преобразовываем его в массив
         $colorant = mysqli_fetch_assoc($result1);
         $colorant_ml = round(($recipe['colorant_value']/6.5), 1);
-        //$price = $price + ($colorant['price']*$colorant['colorant_value']);
+        $price = $price + ($colorant['price']*$colorant_ml);
         echo "<div class=\"alert alert-secondary\">";
         echo $colorant['name_colorant'] . ": " . $colorant_ml . "ml";
         echo"</div>";
@@ -94,7 +94,7 @@ if(isset($_POST['btnOptions'])) {
         </div>
         </div>
     <div class="alert alert-primary" role="alert">
-    Цена
+    Цена: <?php echo $price; ?>
     </div>
     <?php
     } else {
