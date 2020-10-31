@@ -66,9 +66,13 @@ if(isset($_POST['btnOptions'])) {
                 $result1 = mysqli_query($connect, $sql1);
                 //преобразовываем его в массив
                 $colorant = mysqli_fetch_assoc($result1);
-                $colorant_ml = round(($recipe['colorant_value']/6.5), 1)*$packing;
+                $colorant_ml = round(($recipe['colorant_value']*$packing/9.364), 1);
                 $price = $price + ($colorant['price']*$colorant_ml);
                 echo "<div class=\"alert alert-secondary\">";
+                ?>
+                <div class="w-25 position-absolute p-3" 
+                    style="background-color: <?php echo $colorant['color_html']; ?>; top: 7px; left: 200px;"></div>
+                <?php
                 echo $colorant['name_colorant'] . ": " . $colorant_ml . "ml";
                 echo"</div>";
             }
@@ -79,20 +83,28 @@ if(isset($_POST['btnOptions'])) {
             Выбор фасовки:
             <div class="form-check form-check-inline">
                 <input class="form-check-input" id='packing' type="radio" onclick="checkFluency(this, '<?php echo $color['color_name']; ?>', '<?php echo $_POST['product']; ?>')" value="1" checked>
-                <label class="form-check-label" for="inlineRadio1">1</label>
+                <label class="form-check-label" for="inlineRadio1">1.4 кг</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id='packing' type="radio" onclick="checkFluency(this, '<?php echo $color['color_name']; ?>', '<?php echo $_POST['product']; ?>')" value="3">
+                <label class="form-check-label" for="inlineRadio2">4.2 кг</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" id='packing' type="radio" onclick="checkFluency(this, '<?php echo $color['color_name']; ?>', '<?php echo $_POST['product']; ?>')" value="5">
-                <label class="form-check-label" for="inlineRadio2">5</label>
+                <label class="form-check-label" for="inlineRadio2">7 кг</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" id='packing' type="radio" onclick="checkFluency(this, '<?php echo $color['color_name']; ?>', '<?php echo $_POST['product']; ?>')" value="10">
-                <label class="form-check-label" for="inlineRadio2">10</label>
+                <label class="form-check-label" for="inlineRadio2">14 кг</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id='packing' type="radio" onclick="checkFluency(this, '<?php echo $color['color_name']; ?>', '<?php echo $_POST['product']; ?>')" value="14.3">
+                <label class="form-check-label" for="inlineRadio2">20 кг</label>
             </div>
         </div>
 
         <div class="alert alert-primary">
-            Цена: <?php echo $price; ?>
+            Цена: <?php echo $price . " грн"?>
         </div>
     <?php
     } else {
