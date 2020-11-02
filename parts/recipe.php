@@ -47,8 +47,20 @@ if(isset($_POST['btnOptions'])) {
         <div class="alert alert-primary">
             База: <?php echo $name_base['name_base']; ?>
         </div>
-        <div class="alert alert-primary">
-            Рецептура:
+        <div class="alert alert-primary">Рецептура:
+        <table class="table-responsive-sm-5 table-bordered table-dark" style="font-size:80%; text-align:center;">
+                    <thead>
+                        <tr>
+                        <th scope="col">Колорант</th>
+                        <th scope="col">Унция</th>
+                        <th scope="col">Доза</th>
+                        <th scope="col">1/2</th>
+                        <th scope="col">1/4</th>
+                        <th scope="col">Shot</th>
+                        <th scope="col">ml</th>
+                        </tr>
+                    </thead>
+            <tbody >
             <?php
             //делаем запрос к БД на выбор рецептуры соответствующей цвету и продукту с запроса
             $sql = "SELECT `id_colorant`, `colorant_value` FROM `ncs_recept_item` WHERE `color_name` ='" . $_POST["color"] . "' AND `id_product`='" . $id_product['id_product'] . "' AND `id_base`='" . $id_base['id_base'] . "'";
@@ -57,6 +69,7 @@ if(isset($_POST['btnOptions'])) {
             //определяем количество колорантов
             $count_colorants = mysqli_num_rows($result);
             $price = 0;
+
             for ($i=0; $i < $count_colorants; $i++) { 
                 //преобразовываем его в массив
                 $recipe = mysqli_fetch_assoc($result);
@@ -66,17 +79,53 @@ if(isset($_POST['btnOptions'])) {
                 $result1 = mysqli_query($connect, $sql1);
                 //преобразовываем его в массив
                 $colorant = mysqli_fetch_assoc($result1);
-                $colorant_ml = round(($recipe['colorant_value']*$packing/9.364), 1);
+                //получим переменные для отображения
+                $colorant_ml = round(($recipe['colorant_value']*$packing/6.5), 1);
                 $price = $price + ($colorant['price']*$colorant_ml);
-                echo "<div class=\"alert alert-secondary\">";
+                $shot = round(($colorant_ml / 0.154),1);
+                $one = 0;
+                $two = 0;
+                $doz = 0;
+                $uncya= 0;
+                if ($shot >= 192 ){
+                    //получаем остаток от деления
+                    $ost = round(($shot%192)."\n",1);
+                    //получаем количество делений
+                    $uncya = intdiv($shot,192 );
+                }else{
+                    $ost = $shot;
+                }
+                if($ost >= 2 ){
+                    $ost2 = round(($ost%2)."\n",1);
+                    $doz = intdiv($ost,2);
+                }  
+                if(isset($ost2) && $ost2 >= 1){
+                    $ost3 = ($ost2/1)."\n";
+                    $two = 1;
+                }
+                if(isset($ost3) && $ost3 >= 0.5){
+                    $one = 1;
+                }              
                 ?>
-                <div class="w-25 position-absolute p-3" 
-                    style="background-color: <?php echo $colorant['color_html']; ?>; top: 7px; left: 200px;"></div>
-                <?php
-                echo $colorant['name_colorant'] . ": " . $colorant_ml . "ml";
-                echo"</div>";
+                
+                    <td><?php echo $colorant['name_colorant'];?></td>
+                    <td><?php echo $uncya;?></td>
+                    <td><?php echo $doz;?></td>
+                    <td><?php echo $two;?></td>
+                    <td><?php echo $one;?></td>
+                    <td><?php echo $shot;?></td>
+                    <td><?php echo $colorant_ml;?></td>
+                    
+                    <div 
+                    style="background-color: <?php echo $colorant['color_html']; ?>;top: 7px; left: 200px;"></div>
+                    </tr>
+                
+            <?php
+            
             }
             ?>
+            </tbody>
+            </table>
         </div>
 
         <div class="alert alert-primary">
