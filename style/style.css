@@ -1,0 +1,12 @@
+body {
+  background-color: #343a40;
+}
+
+.recipe-item {
+  font-size:110%;
+}
+.table-rec{
+  font-size: 80%;
+  text-align: center;
+  background-color: #343a40;
+}

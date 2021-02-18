@@ -36,9 +36,9 @@ if(isset($_POST['btnOptions'])) {
         //преобразовываем его в массив
         $name_base = mysqli_fetch_assoc($result);
         ?>
-        <div class="alert alert-primary" > 
+        <div class="alert alert-primary" >
             Цвет: <?php echo $color['color_name']; ?>
-            <div class="w-25 position-absolute p-3" 
+            <div class="w-25 position-absolute p-3"
                 style="background-color: <?php echo $color['color_html']; ?>; top: 7px; left: 200px;"></div>
         </div>
         <div class="alert alert-primary">
@@ -48,7 +48,7 @@ if(isset($_POST['btnOptions'])) {
             База: <?php echo $name_base['name_base']; ?>
         </div>
         <div class="alert alert-primary">Рецептура:
-        <table class="table-responsive-sm-5 table-bordered table-dark" style="font-size:80%; text-align:center;">
+        <table class="table-responsive-sm-5 table-bordered table-dark table-rec">
                     <thead>
                         <tr>
                         <th scope="col">Колорант</th>
@@ -70,7 +70,7 @@ if(isset($_POST['btnOptions'])) {
             $count_colorants = mysqli_num_rows($result);
             $price = 0;
 
-            for ($i=0; $i < $count_colorants; $i++) { 
+            for ($i=0; $i < $count_colorants; $i++) {
                 //преобразовываем его в массив
                 $recipe = mysqli_fetch_assoc($result);
                 //делаем запрос к БД на определение названия колоранта соответствующей цвету и продукту с запроса
@@ -98,16 +98,16 @@ if(isset($_POST['btnOptions'])) {
                 if($ost >= 2 ){
                     $ost2 = round(($ost%2)."\n",1);
                     $doz = intdiv($ost,2);
-                }  
+                }
                 if(isset($ost2) && $ost2 >= 1){
                     $ost3 = ($ost2/1)."\n";
                     $two = 1;
                 }
                 if(isset($ost3) && $ost3 >= 0.5){
                     $one = 1;
-                }              
+                }
                 ?>
-                
+
                     <td><?php echo $colorant['name_colorant'];?></td>
                     <td><?php echo $uncya;?></td>
                     <td><?php echo $doz;?></td>
@@ -115,13 +115,13 @@ if(isset($_POST['btnOptions'])) {
                     <td><?php echo $one;?></td>
                     <td><?php echo $shot;?></td>
                     <td><?php echo $colorant_ml;?></td>
-                    
-                    <div 
+
+                    <div
                     style="background-color: <?php echo $colorant['color_html']; ?>;top: 7px; left: 200px;"></div>
                     </tr>
-                
+
             <?php
-            
+
             }
             ?>
             </tbody>
